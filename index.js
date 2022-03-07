@@ -6,18 +6,18 @@ app.use(logger);
 // rotes
 
 app.get('/books', (req, res) => {
-  res.send({ route: "/books" });
+  res.send({ route: req.path });
 });
 
 app.get('/libraries', checkPermission('librarian'), (req, res) => {
   if (req.permission === true) {
-    res.send({ route: "/libraries", permission: req.permission });
+    res.send({ route: req.path, permission: req.permission });
   }
 });
 
 app.get('/authors', checkPermission('author'), (req, res) => {
   if (req.permission === true) {
-    res.send({ route: "/authors", permission: req.permission });
+    res.send({ route: req.path, permission: req.permission });
   }
 });
 
