@@ -10,15 +10,11 @@ app.get('/books', (req, res) => {
 });
 
 app.get('/libraries', checkPermission('librarian'), (req, res) => {
-  if (req.permission === true) {
-    res.send({ route: req.path, permission: req.permission });
-  }
+    return res.send({ route: req.path, permission: req.permission });
 });
 
 app.get('/authors', checkPermission('author'), (req, res) => {
-  if (req.permission === true) {
-    res.send({ route: req.path, permission: req.permission });
-  }
+    return res.send({ route: req.path, permission: req.permission });
 });
 
 
